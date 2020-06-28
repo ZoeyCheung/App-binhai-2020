@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".IconActivity"
+            android:name=".NineActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".ShapeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".IconActivity"
+            android:exported="true" />
         <activity
             android:name=".ImageScaleActivity"
             android:exported="true" />
