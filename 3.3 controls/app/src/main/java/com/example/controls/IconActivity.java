@@ -18,7 +18,7 @@ public class IconActivity extends AppCompatActivity implements View.OnClickListe
 
         // 从布局文件中获取名叫btn_icon的按钮控件
         btn_icon = findViewById(R.id.btn_icon);
-        
+
         // 从资源文件ic_launcher.png中获取图形对象
         drawable = getResources().getDrawable(R.mipmap.ic_launcher);
 
