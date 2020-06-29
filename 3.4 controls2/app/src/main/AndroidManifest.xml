@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SwitchActivity"
+            android:name=".RadioActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".SwitchActivity"
+            android:exported="true" />
         <activity
             android:name=".CheckBoxActivity"
             android:exported="true" />
