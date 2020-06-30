@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="provarray">
+        <item>河南省</item>
+        <item>河北省</item>
+        <item>山东省</item>
+        <item>山西省</item>
+    </string-array>
+</resources>
