@@ -1,6 +1,7 @@
 package com.example.controls2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,7 +27,9 @@ public class CheckBoxActivity extends AppCompatActivity implements CompoundButto
         ck_custom2.setOnCheckedChangeListener(this);
 
         // 设置ck_custom2的复选框图片样式
-        Drawable drawable = this.getResources().getDrawable(R.drawable.checkbox_selector);
+        // minSdkVersion >= 21,getResources过时
+//        Drawable drawable = this.getResources().getDrawable(R.drawable.checkbox_selector);
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.checkbox_selector);
         drawable.setBounds(0,0,46,46);
         ck_custom2.setCompoundDrawablePadding(10);
         ck_custom2.setCompoundDrawables(drawable,null,null,null);

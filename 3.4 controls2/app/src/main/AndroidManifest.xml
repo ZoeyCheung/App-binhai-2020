@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SpinnerActivity"
+            android:name=".EditTextActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".SpinnerActivity"
+            android:exported="true" />
         <activity
             android:name=".RadioActivity"
             android:exported="true" />

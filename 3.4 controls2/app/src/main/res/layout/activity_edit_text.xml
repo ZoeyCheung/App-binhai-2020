@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditTextActivity">
+
+    <EditText
+        android:id="@+id/et_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:hint="保持text属性为空，不然看不到提示"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/edittext_selector"
+        android:ems="10"
+        android:hint="这里是提示信息"
+        android:inputType="text"
+        android:text="看吧，这个就看不到提示"
+        android:textColorHint="#ffff0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_hint" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:hint="请输入11位手机号"
+        android:inputType="number"
+        android:maxLength="11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_border" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:hint="请输入6位密码"
+        android:inputType="textPassword"
+        android:maxLength="6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+
+    <AutoCompleteTextView
+        android:id="@+id/ac_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:completionHint="自动完成框"
+        android:completionThreshold="5"
+        android:hint="输入first或者second,5个字符触发"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+</androidx.constraintlayout.widget.ConstraintLayout>
