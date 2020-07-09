@@ -219,7 +219,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
             if (rb_password.isChecked()) { // 密码方式校验
-                if (!et_password.getText().toString().equals(mPassword)) {
+                // 根据手机号码到数据库中查询用户记录
+                UserInfo info = mHelper.queryByPhone(et_phone.getText().toString());
+                //输入的密码跟mPassword比较
+                // if (!et_password.getText().toString().equals(mPassword)) {
+                //输入的密码和数据库储存的比较
+                if (!et_password.getText().toString().equals(info.pwd)) {
                     Toast.makeText(this, "请输入正确的密码", Toast.LENGTH_SHORT).show();
                 } else { // 密码校验通过
                     loginSuccess(); // 提示用户登录成功
