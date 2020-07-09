@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SQLiteReadActivity"></activity>
+        <activity
+            android:name=".SQLiteWriteActivity"
+            android:exported="true" />
         <activity
             android:name=".ShareWriteActivity"
-            android:exported="true"></activity>
-        <activity android:name=".ShareReadActivity"></activity>
+            android:exported="true" />
+        <activity android:name=".ShareReadActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
