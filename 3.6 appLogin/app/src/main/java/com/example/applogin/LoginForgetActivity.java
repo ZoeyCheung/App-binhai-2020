@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.applogin.bean.UserInfo;
+import com.example.applogin.database.UserDBHelper;
+import com.example.applogin.util.DateUtil;
+
 public class LoginForgetActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText et_password_first; // 声明一个编辑框对象
@@ -17,6 +21,8 @@ public class LoginForgetActivity extends AppCompatActivity implements View.OnCli
     private EditText et_verifycode; // 声明一个编辑框对象
     private String mVerifyCode; // 验证码
     private String mPhone; // 手机号码
+
+    private UserDBHelper mHelper; // 声明一个用户数据库的帮助器对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,22 @@ public class LoginForgetActivity extends AppCompatActivity implements View.OnCli
 
         // 从前一个页面获取要修改密码的手机号码
         mPhone = getIntent().getStringExtra("phone");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 获得用户数据库帮助器的一个实例
+        mHelper = UserDBHelper.getInstance(this, 2);
+        // 恢复页面，则打开数据库连接
+        mHelper.openWriteLink();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 暂停页面，则关闭数据库连接
+        mHelper.closeLink();
     }
 
     @Override
@@ -67,6 +89,12 @@ public class LoginForgetActivity extends AppCompatActivity implements View.OnCli
             if (!et_verifycode.getText().toString().equals(mVerifyCode)) {
                 Toast.makeText(this, "请输入正确的验证码", Toast.LENGTH_SHORT).show();
             } else {
+                UserInfo info = new UserInfo();
+                info.phone = mPhone;
+                info.pwd = password_first;
+                info.update_time = DateUtil.getNowDateTime("yyyy-MM-dd HH:mm:ss");
+                mHelper.update(info, "phone=" + mPhone);
+
                 Toast.makeText(this, "密码修改成功", Toast.LENGTH_SHORT).show();
                 // 把修改好的新密码返回给前一个页面
                 Intent intent = new Intent();

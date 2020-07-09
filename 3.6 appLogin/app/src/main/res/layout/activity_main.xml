@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="请输入密码"
-        android:inputType="numberPassword"
+        android:inputType="number"
         android:maxLength="6"
         app:layout_constraintBottom_toBottomOf="@+id/tv_password"
         app:layout_constraintEnd_toStartOf="@+id/btn_forget"
