@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.storage">
+    <!-- SD卡读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAG" /> <!-- 在SDCard中创建与删除文件权限 -->
+    <permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SQLiteReadActivity" android:exported="true"></activity>
+        <activity
+            android:name=".SDCardInfoActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".SQLiteReadActivity"
+            android:exported="true" />
         <activity
             android:name=".SQLiteWriteActivity"
             android:exported="true" />
