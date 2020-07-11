@@ -48,6 +48,13 @@ public class SDCardInfoActivity extends AppCompatActivity {
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES));
         desc = String.format("%s\n　SD卡的音乐目录路径：%s", desc,
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
+
+        // 获取系统的公共存储路径
+        desc = String.format("%s\n\n　系统的公共存储路径位于：%s", desc,
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+        // 获取当前App的私有存储路径
+        desc = String.format("%s\n　当前App的私有存储路径位于：%s\n\n　Android7.0之后默认禁止访问公共存储目录", desc,getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS));
+
         tv_sdcard_info.setText(desc);
     }
 }
