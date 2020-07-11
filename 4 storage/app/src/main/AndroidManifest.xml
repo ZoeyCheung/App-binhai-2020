@@ -14,8 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ImageReadActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ImageWriteActivity"
+            android:exported="true" />
+        <activity
             android:name=".TextReadActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".TextWriteActivity"
             android:exported="true" />
