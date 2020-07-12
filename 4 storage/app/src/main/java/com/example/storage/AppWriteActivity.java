@@ -1,55 +1,38 @@
 package com.example.storage;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storage.util.DateUtil;
-import com.example.storage.util.FileUtil;
 
-public class ImageWriteActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private ConstraintLayout cl_info;
+public class AppWriteActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText et_name;
     private EditText et_age;
     private EditText et_height;
     private EditText et_weight;
     private boolean bMarried = false;
 
-    private String mPath;
-    private TextView tv_path;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_write);
-
-        // 布局id
-        cl_info = findViewById(R.id.cl_info);
+        setContentView(R.layout.activity_app_write);
 
         et_name = findViewById(R.id.et_name);
         et_age = findViewById(R.id.et_age);
         et_height = findViewById(R.id.et_height);
         et_weight = findViewById(R.id.et_weight);
-        tv_path = findViewById(R.id.tv_path);
         findViewById(R.id.btn_save).setOnClickListener(this);
 
         Spinner sp_married = findViewById(R.id.sp_married);
         sp_married.setOnItemSelectedListener(new TypeSelectedListener());
-
-        // 获取当前App的私有存储目录
-        mPath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString() + "/";
     }
 
     class TypeSelectedListener implements AdapterView.OnItemSelectedListener {
@@ -60,7 +43,7 @@ public class ImageWriteActivity extends AppCompatActivity implements View.OnClic
         public void onNothingSelected(AdapterView<?> arg0) {
         }
     }
-
+    private String[] typeArray = {"未婚", "已婚"};
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_save) {
@@ -81,39 +64,21 @@ public class ImageWriteActivity extends AppCompatActivity implements View.OnClic
                 showToast("请先填写体重");
                 return;
             }
+            // 获取当前应用的Application实例
+            MainApplication app = MainApplication.getInstance();
+            // 以下直接修改Application实例中保存的映射全局变量
+            app.mInfoMap.put("name", name);
+            app.mInfoMap.put("age", age);
+            app.mInfoMap.put("height", height);
+            app.mInfoMap.put("weight", weight);
+            app.mInfoMap.put("married", typeArray[!bMarried ? 0 : 1]);
+            app.mInfoMap.put("update_time", DateUtil.getNowDateTime("yyyy-MM-dd HH:mm:ss"));
+            showToast("数据已写入全局内存");
 
-            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                // 获取布局cl_info绘图缓存中的位图数据
-                Bitmap bitmap = cl_info.getDrawingCache();
-                String file_path = mPath + DateUtil.getNowDateTime("") + ".png";
-                // 把位图数据保存为图片文件
-                FileUtil.saveImage(file_path, bitmap);
-                // 回收位图对象
-                bitmap.recycle();
-                tv_path.setText("用户注册信息图片的保存路径为：\n" + file_path);
-                showToast("图片已存入SD卡文件");
-
-                Intent intent = new Intent(this, ImageReadActivity.class);
-                // 期望接收下个页面的返回数据
-                startActivityForResult(intent, 0);
-            } else {
-                showToast("未发现已挂载的SD卡，请检查");
-            }
+            Intent intent = new Intent(this, AppReadActivity.class);
+            // 期望接收下个页面的返回数据
+            startActivityForResult(intent, 0);
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // 开启布局cl_info的绘图缓存
-        cl_info.setDrawingCacheEnabled(true);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // 关闭布局cl_info的绘图缓存
-        cl_info.setDrawingCacheEnabled(false);
     }
 
     private void showToast(String desc) {

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 @SuppressLint("SimpleDateFormat")
 public class DateUtil {
@@ -14,6 +15,7 @@ public class DateUtil {
             format = "yyyyMMddHHmmss";
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));//设置时区
         return sdf.format(new Date());
     }
 
