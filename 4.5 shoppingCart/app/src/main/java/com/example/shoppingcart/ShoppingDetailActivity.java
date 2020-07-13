@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -119,5 +121,29 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
             Bitmap pic = BitmapFactory.decodeFile(info.pic_path);
             iv_goods_pic.setImageBitmap(pic);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // 从menu_cart.xml中构建菜单界面布局
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_shopping) { // 点击了菜单项“去商场购物”
+            // 跳转到商场页面
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_cart) { // 点击了菜单项“打开购物车”
+            // 跳转到购物车页面
+            Intent intent = new Intent(this, ShoppingCartActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.menu_return) { // 点击了菜单项“返回”
+            finish();
+        }
+        return true;
     }
 }
