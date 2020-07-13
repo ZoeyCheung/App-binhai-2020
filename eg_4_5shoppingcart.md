@@ -4,9 +4,9 @@
 
 ##### 构建商品列表页面
 
-(1) 创建一个公共头部文件：activity_shopping_title.xml，包含标题和购物车图标
-(2) 在布局文件 activity_main.xml 中引用头部文件
-(3) 创建一个滚动视图，用于显示商品列表
+(1). 创建一个公共头部文件：activity_shopping_title.xml，包含标题和购物车图标
+(2). 在布局文件 activity_main.xml 中引用头部文件
+(3). 创建一个滚动视图，用于显示商品列表
 
 ##### 引用工具类（util）
 
