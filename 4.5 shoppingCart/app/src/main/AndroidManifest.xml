@@ -16,12 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ShoppingDetailActivity" />
+        <activity
+            android:name=".ShoppingDetailActivity"
+            android:theme="@style/AppBaseTheme" />
         <activity
             android:name=".ShoppingCartActivity"
             android:exported="true"
             android:theme="@style/AppBaseTheme" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppBaseTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

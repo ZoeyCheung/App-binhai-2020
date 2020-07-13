@@ -2,6 +2,7 @@ package com.example.shoppingcart;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Group;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -31,9 +32,9 @@ import java.util.HashMap;
 public class ShoppingCartActivity extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG = "ShoppingCartActivity";
     private TextView tv_total_price;
-    private LinearLayout ll_content;
+    private Group gp_content;
     private LinearLayout ll_cart;
-    private LinearLayout ll_empty;
+    private Group gp_empty;
     private int mCount; // 购物车中的商品数量
     private GoodsDBHelper mGoodsHelper; // 声明一个商品数据库的帮助器对象
     private CartDBHelper mCartHelper; // 声明一个购物车数据库的帮助器对象
@@ -44,9 +45,9 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_shopping_cart);
 
         tv_total_price = findViewById(R.id.tv_total_price);
-        ll_content = findViewById(R.id.ll_content);
+        gp_content = findViewById(R.id.gp_content);
         ll_cart = findViewById(R.id.ll_cart);
-        ll_empty = findViewById(R.id.ll_empty);
+        gp_empty = findViewById(R.id.gp_empty);
         findViewById(R.id.btn_shopping_channel).setOnClickListener(this);
         findViewById(R.id.btn_settle).setOnClickListener(this);
     }
@@ -55,12 +56,12 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     private void showCount(int count) {
         mCount = count;
         if (mCount == 0) {
-            ll_content.setVisibility(View.GONE);
+            gp_content.setVisibility(View.GONE);
             ll_cart.removeAllViews();
-            ll_empty.setVisibility(View.VISIBLE);
+            gp_empty.setVisibility(View.VISIBLE);
         } else {
-            ll_content.setVisibility(View.VISIBLE);
-            ll_empty.setVisibility(View.GONE);
+            gp_content.setVisibility(View.VISIBLE);
+            gp_empty.setVisibility(View.GONE);
         }
     }
 
@@ -209,13 +210,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         ll_cart.removeAllViews();
         // 创建一个标题行的线性视图ll_row
         LinearLayout ll_row = newLinearLayout(LinearLayout.HORIZONTAL, LinearLayout.LayoutParams.WRAP_CONTENT);
-        ll_row.addView(newTextView(0, 2, Gravity.CENTER, "图片", Color.BLACK, 15));
-        ll_row.addView(newTextView(0, 3, Gravity.CENTER, "名称", Color.BLACK, 15));
-        ll_row.addView(newTextView(0, 1, Gravity.CENTER, "数量", Color.BLACK, 15));
-        ll_row.addView(newTextView(0, 1, Gravity.CENTER, "单价", Color.BLACK, 15));
-        ll_row.addView(newTextView(0, 1, Gravity.CENTER, "总价", Color.BLACK, 15));
-        // 把标题行添加到购物车列表
-        ll_cart.addView(ll_row);
         for (int i = 0; i < mCartArray.size(); i++) {
             final CartInfo info = mCartArray.get(i);
             // 根据商品编号查询商品数据库中的商品记录
@@ -224,6 +218,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             mGoodsMap.put(info.goods_id, goods);
             // 创建该商品行的水平线性视图，从左到右依次为商品小图、商品名称与描述、商品数量、商品单价、商品总价。
             ll_row = newLinearLayout(LinearLayout.HORIZONTAL, LinearLayout.LayoutParams.WRAP_CONTENT);
+            ll_row.setPadding(10,20,10,20);
             // 设置该线性视图的编号
             ll_row.setId(mBeginViewId + i);
             // 添加商品小图
