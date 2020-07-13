@@ -12,6 +12,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,12 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout ll_channel;
     private int mCount; // 购物车中的商品数量
     private GoodsDBHelper mGoodsHelper; // 声明一个商品数据库的帮助器对象
-    private CartDBHelper mCartHelper; // 声明一个购物车数据库的帮助器对象
+    private CartDBHelper mCartHelper; // 声明一个购物车数据库的帮助器对象WW
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 隐藏标题栏
+        getSupportActionBar().hide();
 
         TextView tv_title = findViewById(R.id.tv_title);
         tv_count = findViewById(R.id.tv_count);
