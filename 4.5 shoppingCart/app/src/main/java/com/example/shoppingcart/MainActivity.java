@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout ll_channel;
     private int mCount; // 购物车中的商品数量
     private GoodsDBHelper mGoodsHelper; // 声明一个商品数据库的帮助器对象
-    private CartDBHelper mCartHelper; // 声明一个购物车数据库的帮助器对象WW
+    private CartDBHelper mCartHelper; // 声明一个购物车数据库的帮助器对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

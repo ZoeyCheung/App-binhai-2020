@@ -41,11 +41,9 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         tv_goods_price = findViewById(R.id.tv_goods_price);
         tv_goods_desc = findViewById(R.id.tv_goods_desc);
         iv_goods_pic = findViewById(R.id.iv_goods_pic);
+
         findViewById(R.id.iv_cart).setOnClickListener(this);
         findViewById(R.id.btn_add_cart).setOnClickListener(this);
-        // 获取共享参数保存的购物车中的商品数量
-        mCount = Integer.parseInt(SharedUtil.getIntance(this).readShared("count", "0"));
-        tv_count.setText("" + mCount);
     }
 
     @Override
@@ -87,6 +85,9 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
     @Override
     protected void onResume() {
         super.onResume();
+        // 获取共享参数保存的购物车中的商品数量
+        mCount = Integer.parseInt(SharedUtil.getIntance(this).readShared("count", "0"));
+        tv_count.setText("" + mCount);
         // 获取商品数据库的帮助器对象
         mGoodsHelper = GoodsDBHelper.getInstance(this, 1);
         // 打开商品数据库的读连接

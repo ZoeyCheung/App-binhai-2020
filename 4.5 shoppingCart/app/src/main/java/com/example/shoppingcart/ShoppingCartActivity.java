@@ -208,7 +208,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         }
         // 移除线性视图ll_cart下面的所有子视图
         ll_cart.removeAllViews();
-        // 创建一个标题行的线性视图ll_row
+        // 创建一个线性视图ll_row
         LinearLayout ll_row = newLinearLayout(LinearLayout.HORIZONTAL, LinearLayout.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < mCartArray.size(); i++) {
             final CartInfo info = mCartArray.get(i);
