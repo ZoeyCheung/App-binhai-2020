@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DatePickerDialogActivity"
+            android:name=".TimePickerDialogActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".TimePickerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DatePickerDialogActivity"
+            android:exported="true" />
         <activity
             android:name=".DatePickerActivity"
             android:exported="true" />
