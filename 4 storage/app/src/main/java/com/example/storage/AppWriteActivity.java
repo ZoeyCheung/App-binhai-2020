@@ -76,8 +76,7 @@ public class AppWriteActivity extends AppCompatActivity implements View.OnClickL
             showToast("数据已写入全局内存");
 
             Intent intent = new Intent(this, AppReadActivity.class);
-            // 期望接收下个页面的返回数据
-            startActivityForResult(intent, 0);
+            startActivity(intent);
         }
     }
 

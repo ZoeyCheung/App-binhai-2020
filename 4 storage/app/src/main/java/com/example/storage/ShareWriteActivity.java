@@ -79,8 +79,7 @@ public class ShareWriteActivity extends AppCompatActivity implements View.OnClic
             editor.commit(); // 提交编辑器中的修改
 
             Intent intent = new Intent(this, ShareReadActivity.class);
-            // 期望接收下个页面的返回数据
-            startActivityForResult(intent, 0);
+            startActivity(intent);
         }
     }
 

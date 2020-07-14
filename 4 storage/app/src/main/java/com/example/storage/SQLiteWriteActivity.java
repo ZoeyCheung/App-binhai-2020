@@ -99,8 +99,7 @@ public class SQLiteWriteActivity extends AppCompatActivity implements View.OnCli
             showToast("数据已写入SQLite数据库");
 
             Intent intent = new Intent(this, SQLiteReadActivity.class);
-            // 期望接收下个页面的返回数据
-            startActivityForResult(intent, 0);
+            startActivity(intent);
         }
     }
 

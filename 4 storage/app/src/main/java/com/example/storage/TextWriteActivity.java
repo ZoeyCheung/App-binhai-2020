@@ -90,8 +90,7 @@ public class TextWriteActivity extends AppCompatActivity implements View.OnClick
                 showToast("数据已写入SD卡文件");
 
                 Intent intent = new Intent(this, TextReadActivity.class);
-                // 期望接收下个页面的返回数据
-                startActivityForResult(intent, 0);
+                startActivity(intent);
             } else {
                 showToast("未发现已挂载的SD卡，请检查");
             }
