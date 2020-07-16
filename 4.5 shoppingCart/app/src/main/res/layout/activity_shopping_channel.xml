@@ -5,8 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShoppingChannelActivity">
+
     <include
         android:id="@+id/include"
         layout="@layout/activity_shopping_title" />
+
+    <GridView
+        android:id="@+id/gv_channel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/orange_light"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:padding="2dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

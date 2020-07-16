@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
     android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:orientation="horizontal">
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/iv_thumb"

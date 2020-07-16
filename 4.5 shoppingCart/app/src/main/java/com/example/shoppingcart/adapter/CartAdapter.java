@@ -1,6 +1,7 @@
 package com.example.shoppingcart.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.example.shoppingcart.bean.CartInfo;
 import java.util.ArrayList;
 
 public class CartAdapter extends BaseAdapter {
+    private static final String TAG = "CartAdapter";
     private Context mContext; // 声明一个上下文对象
     private ArrayList<CartInfo> mCartArray; // 声明一个购物车信息队列
 
@@ -44,6 +46,7 @@ public class CartAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) { // 转换视图为空
+            Log.d(TAG, "转换视图为空");
             holder = new ViewHolder(); // 创建一个新的视图持有者
             // 根据布局文件item_cart.xml生成转换视图对象
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_cart, null);
@@ -56,11 +59,13 @@ public class CartAdapter extends BaseAdapter {
             // 将视图持有者保存到转换视图当中
             convertView.setTag(holder);
         } else { // 转换视图非空
+            Log.d(TAG, "转换视图非空");
             // 从转换视图中获取之前保存的视图持有者
             holder = (ViewHolder) convertView.getTag();
         }
 
         CartInfo info = mCartArray.get(position);
+        Log.d(TAG, "info.goods.name:"+info.goods.name);
         holder.iv_thumb.setImageBitmap(MainApplication.getInstance().mIconMap.get(info.goods_id)); // 显示商品的图片
         holder.tv_name.setText(info.goods.name); // 显示商品的名称
         holder.tv_desc.setText(info.goods.desc); // 显示商品的描述

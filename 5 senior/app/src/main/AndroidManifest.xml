@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GridViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".TimePickerDialogActivity"
             android:exported="true" />
         <activity

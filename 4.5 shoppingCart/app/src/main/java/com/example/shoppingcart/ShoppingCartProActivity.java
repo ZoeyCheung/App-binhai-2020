@@ -4,8 +4,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -22,6 +26,7 @@ import com.example.shoppingcart.bean.CartInfo;
 import com.example.shoppingcart.bean.GoodsInfo;
 import com.example.shoppingcart.database.CartDBHelper;
 import com.example.shoppingcart.database.GoodsDBHelper;
+import com.example.shoppingcart.util.FileUtil;
 import com.example.shoppingcart.util.SharedUtil;
 
 import java.util.ArrayList;
@@ -201,6 +206,8 @@ public class ShoppingCartProActivity extends AppCompatActivity implements View.O
         mCartHelper = CartDBHelper.getInstance(this, 1);
         // 打开购物车数据库的写连接
         mCartHelper.openWriteLink();
+        // 模拟从网络下载商品图片
+        downloadGoods();
         // 展示购物车中的商品列表
         showCart();
     }
@@ -256,4 +263,18 @@ public class ShoppingCartProActivity extends AppCompatActivity implements View.O
         tv_total_price.setText("" + total_price);
     }
 
+    private String mFirst = "true"; // 是否首次打开
+
+    //模拟网络数据，初始化数据库中的商品信息
+    private void downloadGoods() {
+        // 查询商品数据库中所有商品记录
+        ArrayList<GoodsInfo> goodsArray = mGoodsHelper.query("1=1");
+        for (int i = 0; i < goodsArray.size(); i++) {
+            GoodsInfo info = goodsArray.get(i);
+            // 从指定路径读取图片文件的位图数据
+            Bitmap thumb = BitmapFactory.decodeFile(info.thumb_path);
+            // 把该位图对象保存到应用实例的全局变量中
+            MainApplication.getInstance().mIconMap.put(info.rowid, thumb);
+        }
+    }
 }
