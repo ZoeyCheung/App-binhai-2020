@@ -95,6 +95,14 @@ public class ShoppingChannelActivity extends AppCompatActivity implements View.O
         mCartHelper = CartDBHelper.getInstance(this, 1);
         // 打开购物车数据库的写连接
         mCartHelper.openWriteLink();
+
+        // 获取共享参数保存的是否首次打开参数
+        mFirst = SharedUtil.getIntance(this).readShared("first", "true");
+        // 模拟从网络下载商品图片
+        downloadGoods(this, mFirst, mGoodsHelper);
+        // 把是否首次打开写入共享参数
+        SharedUtil.getIntance(this).writeShared("first", "false");
+
         // 展示商品列表
         showGoods();
     }
@@ -128,8 +136,9 @@ public class ShoppingChannelActivity extends AppCompatActivity implements View.O
     }
 
     private String mFirst = "true"; // 是否首次打开
+
     //模拟网络数据，初始化数据库中的商品信息
-    private static void downloadGoods(Context ctx, String isFirst, GoodsDBHelper helper) {
+    public static void downloadGoods(Context ctx, String isFirst, GoodsDBHelper helper) {
         // 获取当前App的私有存储路径
         String path = MainApplication.getInstance().getExternalFilesDir(
                 Environment.DIRECTORY_DOWNLOADS).toString() + "/";
