@@ -99,7 +99,7 @@ public class ShoppingChannelActivity extends AppCompatActivity implements View.O
         // 获取共享参数保存的是否首次打开参数
         mFirst = SharedUtil.getIntance(this).readShared("first", "true");
         // 模拟从网络下载商品图片
-        downloadGoods(this, mFirst, mGoodsHelper);
+        downloadGoods();
         // 把是否首次打开写入共享参数
         SharedUtil.getIntance(this).writeShared("first", "false");
 
@@ -117,14 +117,6 @@ public class ShoppingChannelActivity extends AppCompatActivity implements View.O
     }
 
     private void showGoods() {
-        // 判断全局内存中的图表映射是否为空
-        if (MainApplication.getInstance().mIconMap.size() <= 0) {
-            Log.d(TAG,"全局内存中的图表映射为空");
-            // 模拟从网络上下载图片，从而构建简单的图片缓存机制
-            downloadGoods(this, "false", mGoodsHelper);
-        }
-        Log.d(TAG,"全局内存中的图表映射不为空");
-
         // 查询商品数据库中的所有商品记录
         ArrayList<GoodsInfo> goodsArray = mGoodsHelper.query("1=1");
         // 构建商场中商品网格的适配器对象
@@ -138,43 +130,46 @@ public class ShoppingChannelActivity extends AppCompatActivity implements View.O
     private String mFirst = "true"; // 是否首次打开
 
     //模拟网络数据，初始化数据库中的商品信息
-    public static void downloadGoods(Context ctx, String isFirst, GoodsDBHelper helper) {
+    private void downloadGoods() {
+        // 获取共享参数保存的是否首次打开参数
+        mFirst = SharedUtil.getIntance(this).readShared("first", "true");
         // 获取当前App的私有存储路径
         String path = MainApplication.getInstance().getExternalFilesDir(
                 Environment.DIRECTORY_DOWNLOADS).toString() + "/";
-        if (isFirst.equals("true")) { // 如果是首次打开
+        if (mFirst.equals("true")) { // 如果是首次打开
             ArrayList<GoodsInfo> goodsList = GoodsInfo.getDefaultList();
             for (int i = 0; i < goodsList.size(); i++) {
                 GoodsInfo info = goodsList.get(i);
                 // 往商品数据库插入一条该商品的记录
-                long rowid = helper.insert(info);
+                long rowid = mGoodsHelper.insert(info);
                 info.rowid = rowid;
                 // 往全局内存写入商品小图
-                Bitmap thumb = BitmapFactory.decodeResource(ctx.getResources(), info.thumb);
+                Bitmap thumb = BitmapFactory.decodeResource(getResources(), info.thumb);
                 MainApplication.getInstance().mIconMap.put(rowid, thumb);
                 String thumb_path = path + rowid + "_s.jpg";
                 FileUtil.saveImage(thumb_path, thumb);
                 info.thumb_path = thumb_path;
                 // 往SD卡保存商品大图
-                Bitmap pic = BitmapFactory.decodeResource(ctx.getResources(), info.pic);
+                Bitmap pic = BitmapFactory.decodeResource(getResources(), info.pic);
                 String pic_path = path + rowid + ".jpg";
                 FileUtil.saveImage(pic_path, pic);
                 pic.recycle();
                 info.pic_path = pic_path;
                 // 更新商品数据库中该商品记录的图片路径
-                helper.update(info);
+                mGoodsHelper.update(info);
             }
         } else { // 不是首次打开
             // 查询商品数据库中所有商品记录
-            ArrayList<GoodsInfo> goodsArray = helper.query("1=1");
+            ArrayList<GoodsInfo> goodsArray = mGoodsHelper.query("1=1");
             for (int i = 0; i < goodsArray.size(); i++) {
                 GoodsInfo info = goodsArray.get(i);
-                Log.d(TAG, "rowid=" + info.rowid + ", thumb_path=" + info.thumb_path);
                 // 从指定路径读取图片文件的位图数据
                 Bitmap thumb = BitmapFactory.decodeFile(info.thumb_path);
                 // 把该位图对象保存到应用实例的全局变量中
                 MainApplication.getInstance().mIconMap.put(info.rowid, thumb);
             }
         }
+        // 把是否首次打开写入共享参数
+        SharedUtil.getIntance(this).writeShared("first", "false");
     }
 }

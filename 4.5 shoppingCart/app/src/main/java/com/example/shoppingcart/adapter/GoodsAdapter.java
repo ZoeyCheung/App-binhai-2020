@@ -51,7 +51,6 @@ public class GoodsAdapter extends BaseAdapter implements AdapterView.OnItemClick
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) { // 转换视图为空
-            Log.d(TAG, "转换视图为空");
             holder = new ViewHolder(); // 创建一个新的视图持有者
             // 根据布局文件item_goods.xml生成转换视图对象
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_goods, null);
@@ -62,7 +61,6 @@ public class GoodsAdapter extends BaseAdapter implements AdapterView.OnItemClick
             // 将视图持有者保存到转换视图当中
             convertView.setTag(holder);
         } else { // 转换视图非空
-            Log.d(TAG, "转换视图非空");
             // 从转换视图中获取之前保存的视图持有者
             holder = (ViewHolder) convertView.getTag();
         }
