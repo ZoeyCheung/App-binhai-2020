@@ -11,6 +11,12 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="400dp">
 
+        <androidx.viewpager.widget.PagerTabStrip
+            android:id="@+id/pts_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.viewpager.widget.ViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,12 @@
 package com.example.senior;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerTabStrip;
 import androidx.viewpager.widget.ViewPager;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.widget.Toast;
 
 import com.example.senior.adapter.ImagePagerAdapater;
@@ -30,6 +33,10 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         vp_content.setCurrentItem(0);
         // 给vp_content添加页面变化监听器
         vp_content.addOnPageChangeListener(this);
+
+        PagerTabStrip pts_tab = findViewById(R.id.pts_tab);
+        pts_tab.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        pts_tab.setTextColor(Color.GREEN);
     }
 
     // 翻页状态改变时触发。arg0取值说明为：0表示静止，1表示正在滑动，2表示滑动完毕
