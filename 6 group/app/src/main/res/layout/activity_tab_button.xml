@@ -18,17 +18,10 @@
 
     <TextView
         android:id="@+id/tv_tab_button"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:background="@drawable/tab_bg_selector"
         android:drawableTop="@drawable/tab_first_selector"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="点我"
-        android:textColor="@drawable/tab_text_selector"
-        android:textSize="12sp"
+        style="@style/TabButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ck_select" />
