@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TabThirdActivity"></activity>
+        <activity android:name=".TabSecondActivity" />
+        <activity android:name=".TabFirstActivity" />
+        <activity android:name=".TabHostActivity" android:exported="true"/>
         <activity
             android:name=".TabButtonActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
