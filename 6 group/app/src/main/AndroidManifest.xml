@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TabThirdActivity"></activity>
+        <activity
+            android:name=".TabFragmentActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".TabGroupActivity"
+            android:exported="true" />
+        <activity android:name=".TabThirdActivity" />
         <activity android:name=".TabSecondActivity" />
         <activity android:name=".TabFirstActivity" />
-        <activity android:name=".TabHostActivity" android:exported="true"/>
+        <activity
+            android:name=".TabHostActivity"
+            android:exported="true" />
         <activity
             android:name=".TabButtonActivity"
             android:exported="true" />
