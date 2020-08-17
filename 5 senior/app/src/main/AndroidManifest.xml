@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".FragmentDynamicActivity"
+            android:exported="true" />
+        <activity
             android:name=".FragmentStaticActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LaunchSimpleActivity"
             android:exported="true" />
