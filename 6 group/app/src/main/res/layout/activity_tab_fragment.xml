@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="1dp" />
 
     <!-- 碎片标签栏的id必须是@android:id/tabhost -->
-    <android.support.v4.app.FragmentTabHost
+    <TabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tabbar_height">
@@ -25,5 +25,5 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="0" />
-    </android.support.v4.app.FragmentTabHost>
+    </TabHost>
 </androidx.constraintlayout.widget.ConstraintLayout>
