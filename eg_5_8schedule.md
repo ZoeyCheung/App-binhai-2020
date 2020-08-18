@@ -1,8 +1,8 @@
 ## 05.8 日程表
 #### 安装support-v4
-![f13e97063840c2663bb53ae1ec03ed99.png](evernotecid://98A9354A-B35C-491A-9613-EBBBF75FC449/appyinxiangcom/1559383/ENResource/p1986)
-![723ea5e7935ef5a5d856867dcf1ae3ed.png](evernotecid://98A9354A-B35C-491A-9613-EBBBF75FC449/appyinxiangcom/1559383/ENResource/p1988)
-![24289b39095175108fba2e34854b86d4.png](evernotecid://98A9354A-B35C-491A-9613-EBBBF75FC449/appyinxiangcom/1559383/ENResource/p1987)
+![v4安装1.png](http://binhai2020.zrise.top/v4%E5%AE%89%E8%A3%851.png)
+![v4安装2.png](http://binhai2020.zrise.top/v4%E5%AE%89%E8%A3%852.png)
+![v4安装3.png](http://binhai2020.zrise.top/v4%E5%AE%89%E8%A3%853.png)
 
 #### 日历展示页 ScheduleActivity.java
 
