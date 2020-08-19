@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TabCustomActivity"
+            android:name=".BannerPagerActivity"
             android:exported="true"
             android:theme="@style/AppCompatTheme"></activity>
+        <activity
+            android:name=".BannerIndicatorActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".TabCustomActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatTheme" />
         <activity
             android:name=".TabLayoutActivity"
             android:exported="true"
