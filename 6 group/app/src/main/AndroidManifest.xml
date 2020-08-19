@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ToolbarCustomActivity"
+            android:name=".TabCustomActivity"
             android:exported="true"
             android:theme="@style/AppCompatTheme"></activity>
+        <activity
+            android:name=".TabLayoutActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatTheme" />
+        <activity
+            android:name=".ToolbarCustomActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatTheme" />
         <activity
             android:name=".SearchResultActvity"
             android:theme="@style/AppCompatTheme">
