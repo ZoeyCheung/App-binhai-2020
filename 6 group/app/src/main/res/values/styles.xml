@@ -28,4 +28,7 @@
         <item name="android:textColor">@drawable/toolbar_text_selector</item>
     </style>
 
+    <style name="AppCompatTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
 </resources>

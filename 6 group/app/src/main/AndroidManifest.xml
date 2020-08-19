@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ToolbarActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatTheme"></activity>
+        <activity
             android:name=".TabFragmentActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".TabGroupActivity"
             android:exported="true" />
