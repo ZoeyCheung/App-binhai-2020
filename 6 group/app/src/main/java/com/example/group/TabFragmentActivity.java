@@ -1,6 +1,7 @@
 package com.example.group;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTabHost;
 
 import android.os.Bundle;
 
@@ -9,7 +10,6 @@ import com.example.group.fragment.TabSecondFragment;
 import com.example.group.fragment.TabThirdFragment;
 
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentTabHost;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TabHost.TabSpec;
