@@ -4,4 +4,7 @@
     <string name="menu_first">首页</string>
     <string name="menu_second">分类</string>
     <string name="menu_third">购物车</string>
+
+    <string name="please_input">请输入</string>
+    <string name="search">搜索</string>
 </resources>
