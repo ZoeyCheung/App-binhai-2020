@@ -26,7 +26,7 @@ public class ToolbarActivity extends AppCompatActivity {
         // 设置工具栏的标题文字颜色
         tl_head.setTitleTextColor(Color.RED);
         // 设置工具栏的标题文字风格
-        tl_head.setTitleTextAppearance(this, R.style.TabButton);
+//        tl_head.setTitleTextAppearance(this, R.style.TabButton);
         // 设置工具栏的标志图片
         tl_head.setLogo(R.drawable.ic_app);
         // 设置工具栏的副标题文本
