@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RecyclerLinearActivity"
+            android:name=".RecyclerCombineActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".RecyclerGridActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecyclerLinearActivity"
+            android:exported="true" />
         <activity
             android:name=".BannerTopActivity"
             android:exported="true"
