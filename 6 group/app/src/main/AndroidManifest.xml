@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SwipeRefreshActivity"
+            android:name=".SwipeRecyclerActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".SwipeRefreshActivity"
+            android:exported="true" />
         <activity
             android:name=".RecyclerDynamicActivity"
             android:exported="true" />
