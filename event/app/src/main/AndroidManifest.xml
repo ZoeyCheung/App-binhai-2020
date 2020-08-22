@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".VolumeSetActivity"
+            android:name=".EventInterceptActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".EventDispatchActivity"
+            android:exported="true" />
+        <activity
+            android:name=".VolumeSetActivity"
+            android:exported="true" />
         <activity
             android:name=".KeyHardActivity"
             android:exported="true" />
