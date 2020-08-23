@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TouchMultipleActivity" android:exported="true"></activity>
+        <activity
+            android:name=".TouchSingleActivity"
+            android:exported="true" />
         <activity
             android:name=".EventInterceptActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".EventDispatchActivity"
             android:exported="true" />
