@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewFlipperActivity">
+
+    <Button
+        android:id="@+id/btn_pre_flipper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="往前翻页"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintRight_toLeftOf="@+id/btn_next_flipper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_next_flipper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="往后翻页"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toRightOf="@+id/btn_pre_flipper"
+        app:layout_constraintRight_toLeftOf="@+id/btn_control_flipper"
+        app:layout_constraintTop_toTopOf="@+id/btn_pre_flipper" />
+
+    <Button
+        android:id="@+id/btn_control_flipper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="停止自动翻页"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btn_next_flipper"
+        app:layout_constraintTop_toTopOf="@+id/btn_next_flipper" />
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pre_flipper">
+
+        <ViewFlipper
+            android:id="@+id/vf_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:flipInterval="2000"
+            android:layerType="software" />
+
+        <RadioGroup
+            android:id="@+id/rg_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

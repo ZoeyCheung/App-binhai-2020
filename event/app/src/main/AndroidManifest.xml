@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GestureDetectorActivity" android:exported="true"></activity>
+        <activity
+            android:name=".ViewFlipperActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".GestureDetectorActivity"
+            android:exported="true" />
         <activity
             android:name=".TouchMultipleActivity"
             android:exported="true" />
