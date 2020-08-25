@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".PullRefreshActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatTheme"></activity>
+        <activity
             android:name=".DrawerLayoutActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".DisallowScrollActivity"
             android:exported="true" />

@@ -13,4 +13,7 @@
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="AppCompatTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
 </resources>
