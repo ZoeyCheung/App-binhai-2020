@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WebLocalActivity"></activity>
+        <activity
+            android:name=".WebLocalActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".AssetsImageActivity"
             android:exported="true" />
