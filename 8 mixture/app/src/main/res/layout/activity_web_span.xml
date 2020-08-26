@@ -15,7 +15,7 @@
         android:text="可变字符串样式："
         android:textColor="@color/black"
         android:textSize="17sp"
-        app:layout_constraintRight_toLeftOf="@+id/sp_spannable"
+        app:layout_constraintEnd_toStartOf="@+id/sp_spannable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:spinnerMode="dialog"
         app:layout_constraintBottom_toBottomOf="@+id/tv_span"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/tv_span"
+        app:layout_constraintStart_toEndOf="@+id/tv_span"
         app:layout_constraintTop_toTopOf="@+id/tv_span" />
 
     <TextView
