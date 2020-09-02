@@ -7,6 +7,7 @@
     <!-- 在SDCard中创建与删除文件权限 -->
     <permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
+    <!-- application节点指定了该App在手机桌面上显示的图标、名称、风格等信息 -->
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -15,8 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppReadActivity" android:exported="true"></activity>
-        <activity android:name=".AppWriteActivity" android:exported="true"/>
+        <!-- activity节点指定了该App拥有的活动页面信息 -->
+        <activity
+            android:name=".AppReadActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AppWriteActivity"
+            android:exported="true" />
         <activity
             android:name=".ImageReadActivity"
             android:exported="true" />
