@@ -91,6 +91,7 @@
         android:text="tv_link1"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_link2"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="468dp" />
 
@@ -107,6 +108,7 @@
         android:padding="10dp"
         android:text="tv_link3"
         android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintBottom_toBottomOf="@+id/tv_link2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_link2"
@@ -125,6 +127,7 @@
         android:padding="10dp"
         android:text="tv_link2"
         android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="2"
         app:layout_constraintBottom_toBottomOf="@+id/tv_link1"
         app:layout_constraintEnd_toStartOf="@+id/tv_link3"
         app:layout_constraintStart_toEndOf="@+id/tv_link1"
