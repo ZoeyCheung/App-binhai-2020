@@ -57,6 +57,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:text="直线"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_rect"
         app:layout_constraintEnd_toStartOf="@+id/btn_oval"
         app:layout_constraintStart_toEndOf="@+id/btn_rect"
