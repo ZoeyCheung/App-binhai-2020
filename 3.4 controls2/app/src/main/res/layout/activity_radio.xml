@@ -76,7 +76,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:button="@drawable/radio_selector"
-            android:drawablePadding="10dp"
             android:text="已毕业" />
     </RadioGroup>
 

@@ -4,4 +4,4 @@
     android:gravity="center"
     android:minHeight="40dp"
     android:textColor="#ff0000"
-    android:textSize="17sp" />
+    android:textSize="14sp" />
