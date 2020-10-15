@@ -3,11 +3,14 @@ package com.example.controls;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-public class ImageScaleActivity extends AppCompatActivity implements View.OnClickListener{
+public class ImageScaleActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_scale;// 声明一个图像视图的对象
+    private final static String TAG = "ImageScaleActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,5 +54,7 @@ public class ImageScaleActivity extends AppCompatActivity implements View.OnClic
             // 将拉伸类型设置为“保持宽高比例，拉伸图片使其位于视图下方或右侧”
             iv_scale.setScaleType(ImageView.ScaleType.FIT_END);
         }
+        Log.d(TAG, "onClick: " + iv_scale.getScaleType());
+        Toast.makeText(ImageScaleActivity.this, "设置缩放类型：" + iv_scale.getScaleType(), Toast.LENGTH_SHORT).show();
     }
 }
