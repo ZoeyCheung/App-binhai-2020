@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // 给rg_login设置单选监听器
         rg_login.setOnCheckedChangeListener(new RadioListener());
-        // 给ck_remember设置勾选监听器
-        ck_remember.setOnCheckedChangeListener(new CheckListener());
         // 给et_phone添加文本变更监听器
         et_phone.addTextChangedListener(new HideTextWatcher(et_phone));
         // 给et_password添加文本变更监听器
@@ -119,16 +117,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 et_password.setHint("请输入验证码");
                 btn_forget.setText("获取验证码");
                 ck_remember.setVisibility(View.INVISIBLE);
-            }
-        }
-    }
-
-    // 定义是否记住密码的勾选监听器
-    private class CheckListener implements CompoundButton.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (buttonView.getId() == R.id.ck_remember) {
-                bRemember = isChecked;
             }
         }
     }
