@@ -77,6 +77,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //从share_login.xml中获取共享参数对象
         mShared = getSharedPreferences("share_login", MODE_PRIVATE);
+
+        // 获取共享参数中保存的手机号码
+        String phone = mShared.getString("phone", "");
+        // 获取共享参数中保存的密码
+        String password = mShared.getString("password", "");
+        et_phone.setText(phone); // 给手机号码编辑框填写上次保存的手机号
+        et_password.setText(password); // 给密码编辑框填写上次保存的密码
     }
 
     // 初始化用户类型的下拉框
