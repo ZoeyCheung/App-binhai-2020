@@ -1,4 +1,4 @@
-package com.example.applogin.database;
+package com.example.applogin1.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,13 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.applogin.bean.UserInfo;
+import com.example.applogin1.bean.UserInfo;
 
 import java.util.ArrayList;
 
 public class UserDBHelper extends SQLiteOpenHelper {
     private static final String TAG = "UserDBHelper"; //Log提示信息
-    private static final String DB_NAME = "user.db"; // 数据库的名称
+    private static final String DB_NAME = "user_al1.db"; // 数据库的名称
     private static final int DB_VERSION = 1; // 数据库的版本号
     private static UserDBHelper mHelper = null; // 数据库帮助器的实例
     private SQLiteDatabase mDB = null; // 数据库的实例

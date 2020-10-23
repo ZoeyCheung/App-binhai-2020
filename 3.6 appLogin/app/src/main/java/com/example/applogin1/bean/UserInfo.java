@@ -1,4 +1,4 @@
-package com.example.applogin.bean;
+package com.example.applogin1.bean;
 
 public class UserInfo {
     public long rowid;

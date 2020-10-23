@@ -88,6 +88,12 @@ public class LoginForgetActivity extends AppCompatActivity implements View.OnCli
             if (!et_verifycode.getText().toString().equals(mVerifyCode)) {
                 Toast.makeText(this, "请输入正确的验证码", Toast.LENGTH_SHORT).show();
             } else {
+                UserInfo info = new UserInfo();
+                info.phone = mPhone;
+                info.pwd = password_first;
+                info.update_time = DateUtil.getNowDateTime("yyyy-MM-dd HH:mm:ss");
+                mHelper.update(info, "phone=" + mPhone);
+
                 Toast.makeText(this, "密码修改成功", Toast.LENGTH_SHORT).show();
                 // 把修改好的新密码返回给前一个页面
                 Intent intent = new Intent();

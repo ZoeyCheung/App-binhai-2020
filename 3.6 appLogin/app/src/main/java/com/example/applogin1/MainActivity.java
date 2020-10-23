@@ -28,7 +28,7 @@ import com.example.applogin1.database.UserDBHelper;
 import com.example.applogin1.util.DateUtil;
 import com.example.applogin1.util.ViewUtil;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
     private RadioGroup rg_login; // 声明一个单选组对象
     private RadioButton rb_password; // 声明一个单选按钮对象
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String mPassword = "111111"; // 默认密码
     private String mVerifyCode; // 验证码
 
-    private SharedPreferences mShared; // 声明一个共享参数对象
+    private UserDBHelper mHelper; // 声明一个用户数据库的帮助器对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 给ck_remember设置勾选监听器
         ck_remember.setOnCheckedChangeListener(new CheckListener());
 
-        //从share_login.xml中获取共享参数对象
-        mShared = getSharedPreferences("share_login", MODE_PRIVATE);
-
-        // 获取共享参数中保存的手机号码
-        String phone = mShared.getString("phone", "");
-        // 获取共享参数中保存的密码
-        String password = mShared.getString("password", "");
-        et_phone.setText(phone); // 给手机号码编辑框填写上次保存的手机号
-        et_password.setText(password); // 给密码编辑框填写上次保存的密码
+        // 给密码编辑框注册一个焦点变化监听器，一旦焦点发生变化，就触发监听器的onFocusChange方法
+        et_password.setOnFocusChangeListener(this);
     }
 
     // 初始化用户类型的下拉框
@@ -204,11 +197,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
             if (rb_password.isChecked()) { // 密码方式校验
-                //输入的密码跟mPassword比较
-                 if (!et_password.getText().toString().equals(mPassword)) {
-                    Toast.makeText(this, "请输入正确的密码", Toast.LENGTH_SHORT).show();
-                } else { // 密码校验通过
-                    loginSuccess(); // 提示用户登录成功
+                // 根据手机号码到数据库中查询用户记录
+                UserInfo info = mHelper.queryByPhone(et_phone.getText().toString());
+                if (info != null) {
+                    // 输入的密码和数据库储存的比较
+                    if (!et_password.getText().toString().equals(info.pwd)) {
+                        Toast.makeText(this, "请输入正确的密码", Toast.LENGTH_SHORT).show();
+                    } else { // 密码校验通过
+                        loginSuccess(); // 提示用户登录成功
+                    }
+                } else {
+                    //输入的密码跟mPassword比较
+                    if (!et_password.getText().toString().equals(mPassword)) {
+                        Toast.makeText(this, "请输入正确的密码", Toast.LENGTH_SHORT).show();
+                    } else { // 密码校验通过
+                        loginSuccess(); // 提示用户登录成功
+                    }
                 }
             } else if (rb_verifycode.isChecked()) { // 验证码方式校验
                 if (!et_password.getText().toString().equals(mVerifyCode)) {
@@ -237,6 +241,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onRestart();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 获得用户数据库帮助器的一个实例
+        mHelper = UserDBHelper.getInstance(this, 2);
+        // 恢复页面，则打开数据库连接
+        mHelper.openWriteLink();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 暂停页面，则关闭数据库连接
+        mHelper.closeLink();
+    }
+
     // 定义是否记住密码的勾选监听器
     private class CheckListener implements CompoundButton.OnCheckedChangeListener {
         @Override
@@ -251,11 +271,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void loginSuccess() {
         // 如果勾选了“记住密码”
         if (bRemember) {
-            //把手机号码和密码都保存到共享参数中
-            SharedPreferences.Editor editor = mShared.edit(); // 获得编辑器的对象
-            editor.putString("phone", et_phone.getText().toString()); // 添加名叫phone的手机号码
-            editor.putString("password", et_password.getText().toString()); // 添加名叫password的密码
-            editor.commit(); // 提交编辑器中的修改
+            //把手机号码和密码保存为数据库的用户表记录
+            // 创建一个用户信息实体类
+            UserInfo info = new UserInfo();
+            info.phone = et_phone.getText().toString();
+            info.pwd = et_password.getText().toString();
+            info.update_time = DateUtil.getNowDateTime("yyyy-MM-dd HH:mm:ss");
+            // 往用户数据库添加登录成功的用户信息（包含手机号码、密码、登录时间）
+            mHelper.insert(info);
         }
 
         String desc = String.format("您的手机号码是%s，类型是%s。恭喜你通过登录验证，点击“确定”按钮返回上个页面",
@@ -273,5 +296,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setNegativeButton("我再看看", null);
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+     // 焦点变更事件的处理方法，hasFocus表示当前控件是否获得焦点。
+    // 为什么光标进入密码框事件不选onClick？因为要点两下才会触发onClick动作（第一下是切换焦点动作）
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        String phone = et_phone.getText().toString();
+        // 判断是否是密码编辑框发生焦点变化
+        if (v.getId() == R.id.et_password) {
+            // 用户已输入手机号码，且密码框获得焦点
+            if (phone.length() > 0 && hasFocus) {
+                // 根据手机号码到数据库中查询用户记录
+                UserInfo info = mHelper.queryByPhone(phone);
+                if (info != null) {
+                    // 找到用户记录，则自动在密码框中填写该用户的密码
+                    et_password.setText(info.pwd);
+                    mPassword = info.pwd;
+                }
+            }
+        }
     }
 }
