@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String mPassword = "111111"; // 默认密码
     private String mVerifyCode; // 验证码
 
+    private SharedPreferences mShared; // 声明一个共享参数对象
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_login.setOnClickListener(this);
 
         initTypeSpinner();
+
+        // 给ck_remember设置勾选监听器
+        ck_remember.setOnCheckedChangeListener(new CheckListener());
+
+        //从share_login.xml中获取共享参数对象
+        mShared = getSharedPreferences("share_login", MODE_PRIVATE);
     }
 
     // 初始化用户类型的下拉框
@@ -217,8 +227,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onRestart();
     }
 
+    // 定义是否记住密码的勾选监听器
+    private class CheckListener implements CompoundButton.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (buttonView.getId() == R.id.ck_remember) {
+                bRemember = isChecked;
+            }
+        }
+    }
+
     // 校验通过，登录成功
     private void loginSuccess() {
+        // 如果勾选了“记住密码”
+        if (bRemember) {
+            //把手机号码和密码都保存到共享参数中
+            SharedPreferences.Editor editor = mShared.edit(); // 获得编辑器的对象
+            editor.putString("phone", et_phone.getText().toString()); // 添加名叫phone的手机号码
+            editor.putString("password", et_password.getText().toString()); // 添加名叫password的密码
+            editor.commit(); // 提交编辑器中的修改
+        }
+
         String desc = String.format("您的手机号码是%s，类型是%s。恭喜你通过登录验证，点击“确定”按钮返回上个页面",
                 et_phone.getText().toString(), typeArray[mType]);
         // 弹出提醒对话框，提示用户登录成功
