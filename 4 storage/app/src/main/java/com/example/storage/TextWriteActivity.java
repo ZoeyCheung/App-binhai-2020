@@ -82,6 +82,8 @@ public class TextWriteActivity extends AppCompatActivity implements View.OnClick
             content = String.format("%s　体重：%skg\n", content, weight);
             content = String.format("%s　婚否：%s\n", content, bMarried);
             content = String.format("%s　注册时间：%s\n", content, DateUtil.getNowDateTime("yyyy-MM-dd HH:mm:ss"));
+
+            // 检查SD卡状态,存储媒体已经挂载，并且挂载点可读/写。
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String file_path = mPath + DateUtil.getNowDateTime("") + ".txt";
                 // 把文本字符串保存为文本文件
