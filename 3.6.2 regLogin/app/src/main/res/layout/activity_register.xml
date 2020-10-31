@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+
+    <TextView
+        android:id="@+id/sp_registername"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:gravity="right"
+        android:text="姓名："
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/et_registername"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_registername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:hint="请输入用户名"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/sp_registername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sp_registername"
+        app:layout_constraintTop_toTopOf="@+id/sp_registername" />
+
+    <TextView
+        android:id="@+id/sp_registerphone"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="28dp"
+        android:gravity="right"
+        android:text="手机号码："
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/et_registerphone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_registername" />
+
+    <EditText
+        android:id="@+id/et_registerphone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:hint="请输入手机号码"
+        android:inputType="phone"
+        android:maxLength="11"
+        app:layout_constraintBottom_toBottomOf="@+id/sp_registerphone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sp_registerphone"
+        app:layout_constraintTop_toTopOf="@+id/sp_registerphone"
+        app:layout_constraintVertical_bias="0.473" />
+
+    <TextView
+        android:id="@+id/sp_registerpassword"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="28dp"
+        android:gravity="right"
+        android:text="密码："
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/et_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_registerphone" />
+
+    <EditText
+        android:id="@+id/et_registerpassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:hint="请输入密码"
+        android:inputType="numberPassword"
+        android:maxLength="8"
+        app:layout_constraintBottom_toBottomOf="@+id/sp_registerpassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sp_registerpassword"
+        app:layout_constraintTop_toTopOf="@+id/sp_registerpassword" />
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#2196F3"
+        android:text="注册"
+        android:clickable="true"
+        android:textColor="#FAF9F9"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_registerpassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
