@@ -35,8 +35,7 @@ public class DatePickerDialogActivity extends AppCompatActivity implements View.
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        String desc = String.format("您选择的日期是%d年%d月%d日",
-                year, monthOfYear + 1, dayOfMonth);
+        String desc = String.format("您选择的日期是%d年%d月%d日", year, monthOfYear + 1, dayOfMonth);
         tv_date.setText(desc);
     }
 }
